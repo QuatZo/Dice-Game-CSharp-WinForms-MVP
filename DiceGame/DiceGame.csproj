@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4247709C-3EDB-42CF-AC0B-4E69C49CE1F8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DiceGame</RootNamespace>
+    <AssemblyName>DiceGame</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DicePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DicePanel.Designer.cs">
+      <DependentUpon>DicePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IDicePanelView.cs" />
+    <Compile Include="IView.cs" />
+    <Compile Include="Model.cs" />
+    <Compile Include="Presenter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DicePanel.resx">
+      <DependentUpon>DicePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\DiceRoll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice6Opacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice1Opacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice2Opacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice3Opacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice4Opacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\Dice5Opacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\DicePass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\DicePassOpacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\DiceRollOpacity.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
