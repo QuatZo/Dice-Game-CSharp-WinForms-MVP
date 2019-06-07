@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tableScore = new System.Windows.Forms.TableLayoutPanel();
             this.labelPause = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.labelPointsSum = new System.Windows.Forms.Label();
             this.labelCategorySum = new System.Windows.Forms.Label();
             this.labelPointsChance = new System.Windows.Forms.Label();
             this.labelChance = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             this.tableScore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableScore.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.tableScore.Controls.Add(this.labelPause, 1, 14);
-            this.tableScore.Controls.Add(this.label30, 1, 15);
+            this.tableScore.Controls.Add(this.labelPointsSum, 1, 15);
             this.tableScore.Controls.Add(this.labelCategorySum, 0, 15);
             this.tableScore.Controls.Add(this.labelPointsChance, 1, 13);
             this.tableScore.Controls.Add(this.labelChance, 0, 13);
@@ -134,6 +134,7 @@
             this.tableScore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.25F));
             this.tableScore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.25F));
             this.tableScore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.25F));
+            this.tableScore.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableScore.Size = new System.Drawing.Size(200, 500);
             this.tableScore.TabIndex = 5;
             // 
@@ -146,13 +147,14 @@
             this.labelPause.TabIndex = 33;
             this.labelPause.Text = "____________";
             // 
-            // label30
+            // labelPointsSum
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(113, 467);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(0, 13);
-            this.label30.TabIndex = 31;
+            this.labelPointsSum.AutoSize = true;
+            this.labelPointsSum.Location = new System.Drawing.Point(113, 467);
+            this.labelPointsSum.Name = "labelPointsSum";
+            this.labelPointsSum.Size = new System.Drawing.Size(13, 13);
+            this.labelPointsSum.TabIndex = 31;
+            this.labelPointsSum.Text = "0";
             // 
             // labelCategorySum
             // 
@@ -168,8 +170,9 @@
             this.labelPointsChance.AutoSize = true;
             this.labelPointsChance.Location = new System.Drawing.Point(113, 405);
             this.labelPointsChance.Name = "labelPointsChance";
-            this.labelPointsChance.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsChance.Size = new System.Drawing.Size(16, 13);
             this.labelPointsChance.TabIndex = 27;
+            this.labelPointsChance.Text = "-1";
             // 
             // labelChance
             // 
@@ -185,8 +188,9 @@
             this.labelPointsYahtzee.AutoSize = true;
             this.labelPointsYahtzee.Location = new System.Drawing.Point(113, 374);
             this.labelPointsYahtzee.Name = "labelPointsYahtzee";
-            this.labelPointsYahtzee.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsYahtzee.Size = new System.Drawing.Size(16, 13);
             this.labelPointsYahtzee.TabIndex = 25;
+            this.labelPointsYahtzee.Text = "-1";
             // 
             // labelCategoryYahtzee
             // 
@@ -202,8 +206,9 @@
             this.labelPointsLargeStraight.AutoSize = true;
             this.labelPointsLargeStraight.Location = new System.Drawing.Point(113, 343);
             this.labelPointsLargeStraight.Name = "labelPointsLargeStraight";
-            this.labelPointsLargeStraight.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsLargeStraight.Size = new System.Drawing.Size(16, 13);
             this.labelPointsLargeStraight.TabIndex = 23;
+            this.labelPointsLargeStraight.Text = "-1";
             // 
             // labelCategoryLargeStraight
             // 
@@ -219,8 +224,9 @@
             this.labelPointsSmallStraight.AutoSize = true;
             this.labelPointsSmallStraight.Location = new System.Drawing.Point(113, 312);
             this.labelPointsSmallStraight.Name = "labelPointsSmallStraight";
-            this.labelPointsSmallStraight.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsSmallStraight.Size = new System.Drawing.Size(16, 13);
             this.labelPointsSmallStraight.TabIndex = 21;
+            this.labelPointsSmallStraight.Text = "-1";
             // 
             // labelCategorySmallStraight
             // 
@@ -236,8 +242,9 @@
             this.labelPointsFullHouse.AutoSize = true;
             this.labelPointsFullHouse.Location = new System.Drawing.Point(113, 281);
             this.labelPointsFullHouse.Name = "labelPointsFullHouse";
-            this.labelPointsFullHouse.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsFullHouse.Size = new System.Drawing.Size(16, 13);
             this.labelPointsFullHouse.TabIndex = 19;
+            this.labelPointsFullHouse.Text = "-1";
             // 
             // labelCategoryFullHouse
             // 
@@ -253,8 +260,9 @@
             this.labelPointsFourKind.AutoSize = true;
             this.labelPointsFourKind.Location = new System.Drawing.Point(113, 250);
             this.labelPointsFourKind.Name = "labelPointsFourKind";
-            this.labelPointsFourKind.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsFourKind.Size = new System.Drawing.Size(16, 13);
             this.labelPointsFourKind.TabIndex = 17;
+            this.labelPointsFourKind.Text = "-1";
             // 
             // labelCategoryFourKind
             // 
@@ -270,8 +278,9 @@
             this.labelPointsThreeKind.AutoSize = true;
             this.labelPointsThreeKind.Location = new System.Drawing.Point(113, 219);
             this.labelPointsThreeKind.Name = "labelPointsThreeKind";
-            this.labelPointsThreeKind.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsThreeKind.Size = new System.Drawing.Size(16, 13);
             this.labelPointsThreeKind.TabIndex = 15;
+            this.labelPointsThreeKind.Text = "-1";
             // 
             // labelCategoryThreeKind
             // 
@@ -287,8 +296,9 @@
             this.labelPointsSixes.AutoSize = true;
             this.labelPointsSixes.Location = new System.Drawing.Point(113, 188);
             this.labelPointsSixes.Name = "labelPointsSixes";
-            this.labelPointsSixes.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsSixes.Size = new System.Drawing.Size(16, 13);
             this.labelPointsSixes.TabIndex = 13;
+            this.labelPointsSixes.Text = "-1";
             // 
             // labelCategorySixes
             // 
@@ -304,8 +314,9 @@
             this.labelPointsFives.AutoSize = true;
             this.labelPointsFives.Location = new System.Drawing.Point(113, 157);
             this.labelPointsFives.Name = "labelPointsFives";
-            this.labelPointsFives.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsFives.Size = new System.Drawing.Size(16, 13);
             this.labelPointsFives.TabIndex = 11;
+            this.labelPointsFives.Text = "-1";
             // 
             // labelCategoryFives
             // 
@@ -321,8 +332,9 @@
             this.labelPointsFours.AutoSize = true;
             this.labelPointsFours.Location = new System.Drawing.Point(113, 126);
             this.labelPointsFours.Name = "labelPointsFours";
-            this.labelPointsFours.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsFours.Size = new System.Drawing.Size(16, 13);
             this.labelPointsFours.TabIndex = 9;
+            this.labelPointsFours.Text = "-1";
             // 
             // labelCategoryFours
             // 
@@ -338,8 +350,9 @@
             this.labelPointsThrees.AutoSize = true;
             this.labelPointsThrees.Location = new System.Drawing.Point(113, 95);
             this.labelPointsThrees.Name = "labelPointsThrees";
-            this.labelPointsThrees.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsThrees.Size = new System.Drawing.Size(16, 13);
             this.labelPointsThrees.TabIndex = 7;
+            this.labelPointsThrees.Text = "-1";
             // 
             // labelCategoryThrees
             // 
@@ -355,8 +368,9 @@
             this.labelPointsTwos.AutoSize = true;
             this.labelPointsTwos.Location = new System.Drawing.Point(113, 64);
             this.labelPointsTwos.Name = "labelPointsTwos";
-            this.labelPointsTwos.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsTwos.Size = new System.Drawing.Size(16, 13);
             this.labelPointsTwos.TabIndex = 5;
+            this.labelPointsTwos.Text = "-1";
             // 
             // labelCategoryTwos
             // 
@@ -372,8 +386,9 @@
             this.labelPointsAces.AutoSize = true;
             this.labelPointsAces.Location = new System.Drawing.Point(113, 33);
             this.labelPointsAces.Name = "labelPointsAces";
-            this.labelPointsAces.Size = new System.Drawing.Size(0, 13);
+            this.labelPointsAces.Size = new System.Drawing.Size(16, 13);
             this.labelPointsAces.TabIndex = 3;
+            this.labelPointsAces.Text = "-1";
             // 
             // labelPoints
             // 
@@ -439,13 +454,13 @@
             // 
             // pictureBoxPass
             // 
-            this.pictureBoxPass.Enabled = false;
             this.pictureBoxPass.Image = global::DiceGame.Properties.Resources.DicePassOpacity;
             this.pictureBoxPass.Location = new System.Drawing.Point(544, 409);
             this.pictureBoxPass.Name = "pictureBoxPass";
             this.pictureBoxPass.Size = new System.Drawing.Size(250, 100);
             this.pictureBoxPass.TabIndex = 14;
             this.pictureBoxPass.TabStop = false;
+            this.pictureBoxPass.Click += new System.EventHandler(this.pictureBoxPass_Click);
             // 
             // pictureBoxRoll
             // 
@@ -536,7 +551,7 @@
         private System.Windows.Forms.PictureBox pictureBoxRoll;
         private System.Windows.Forms.Label labelRulesMain;
         private System.Windows.Forms.Label labelPause;
-        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label labelPointsSum;
         private System.Windows.Forms.Label labelCategorySum;
         private System.Windows.Forms.Label labelPointsChance;
         private System.Windows.Forms.Label labelChance;
