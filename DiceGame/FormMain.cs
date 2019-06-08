@@ -14,6 +14,8 @@ namespace DiceGame
     public partial class FormMain : Form, IView
     {
         #region Properties
+        public GameEngine Game { get; set; }
+
         public TableLayoutPanel Table
         {
             get
@@ -23,6 +25,18 @@ namespace DiceGame
             set
             {
                 tableScore = value;
+            }
+        }
+
+        public int ScoreLabel
+        {
+            get
+            {
+                return int.Parse(labelPointsSum.Text);
+            }
+            set
+            {
+                labelPointsSum.Text = value.ToString();
             }
         }
 
@@ -85,61 +99,48 @@ namespace DiceGame
             }
         }
 
-        public List<Bitmap> DiceResources { get; set; }
-        public List<Bitmap> DiceOpacityResources { get; set; }
-
-        public int Rolls { get; set; } = 0;
-        public int Rounds { get; set; } = 0;
-        public int TotalScore
+        public List<PictureBox> Dices
         {
             get
             {
-                return int.Parse(labelPointsSum.Text);
+                return new List<PictureBox>
+                {
+                    DiceFirst.Dice,
+                    DiceSecond.Dice,
+                    DiceThird.Dice,
+                    DiceFourth.Dice,
+                    DiceFifth.Dice,
+                };
             }
             set
             {
-                labelPointsSum.Text = value.ToString();
+                DiceFirst.Dice = value[0];
+                DiceSecond.Dice = value[1];
+                DiceThird.Dice = value[2];
+                DiceFourth.Dice = value[3];
+                DiceFifth.Dice = value[4];
+
             }
         }
-        public List<int> FinalRolls
+        public List<PictureBox> Buttons
         {
             get
             {
-                List<int> finalRolls = new List<int>();
-
-                List<bool> diceFlags = new List<bool> { false, false, false, false, false };
-                for (int i = 1; i <= 6; i++)
+                return new List<PictureBox>
                 {
-                    if (!diceFlags[0] && (DiceFirst.Dice.Image == DiceResources[i] || DiceFirst.Dice.Image == DiceOpacityResources[i]))
-                    {
-                        finalRolls.Add(i);
-                        diceFlags[0] = true;
-                    }
-                    if (!diceFlags[1] && (DiceSecond.Dice.Image == DiceResources[i] || DiceSecond.Dice.Image == DiceOpacityResources[i]))
-                    {
-                        finalRolls.Add(i);
-                        diceFlags[1] = true;
-                    }
-                    if (!diceFlags[2] && (DiceThird.Dice.Image == DiceResources[i] || DiceThird.Dice.Image == DiceOpacityResources[i]))
-                    {
-                        finalRolls.Add(i);
-                        diceFlags[2] = true;
-                    }
-                    if (!diceFlags[3] && (DiceFourth.Dice.Image == DiceResources[i] || DiceFourth.Dice.Image == DiceOpacityResources[i]))
-                    {
-                        finalRolls.Add(i);
-                        diceFlags[3] = true;
-                    }
-                    if (!diceFlags[4] && (DiceFifth.Dice.Image == DiceResources[i] || DiceFifth.Dice.Image == DiceOpacityResources[i]))
-                    {
-                        finalRolls.Add(i);
-                        diceFlags[4] = true;
-                    }
-                }
-
-                return finalRolls;
+                    RollButton,
+                    PassButton
+                };
+            }
+            set
+            {
+                RollButton = value[0];
+                PassButton = value[1];
             }
         }
+
+        public List<Bitmap> DiceResources { get; set; }
+        public List<Bitmap> DiceOpacityResources { get; set; }
         #endregion
 
         public FormMain()
@@ -198,41 +199,6 @@ namespace DiceGame
             PassButtonClicked?.Invoke();
         }
 
-        public void Roll(List<int> randoms)
-        {
-            if (DiceResources.Contains(DiceFirst.Dice.Image)) { DiceFirst.Dice.Image = DiceResources[randoms[0]]; }
-            if (DiceResources.Contains(DiceSecond.Dice.Image)) { DiceSecond.Dice.Image = DiceResources[randoms[1]]; }
-            if (DiceResources.Contains(DiceThird.Dice.Image)) { DiceThird.Dice.Image = DiceResources[randoms[2]]; }
-            if (DiceResources.Contains(DiceFourth.Dice.Image)) { DiceFourth.Dice.Image = DiceResources[randoms[3]]; }
-            if (DiceResources.Contains(DiceFifth.Dice.Image)) { DiceFifth.Dice.Image = DiceResources[randoms[4]]; }
-
-            Rolls++;
-        }
-
-        public void ChooseCategory()
-        {
-            foreach(var finalRoll in FinalRolls)
-            {
-                Console.WriteLine(finalRoll);
-            }
-            
-        }
-
-        public void NextRound()
-        {
-            Rounds++;
-
-            DiceFirst.Dice.Image = DiceResources[0];
-            DiceSecond.Dice.Image = DiceResources[0];
-            DiceThird.Dice.Image = DiceResources[0];
-            DiceFourth.Dice.Image = DiceResources[0];
-            DiceFifth.Dice.Image = DiceResources[0];
-
-            RollButton.Image = DiceResources[7];
-            PassButton.Image = DiceResources[8];
-
-            Rolls = 0;
-        }
         public void Exit()
         {
             Close();

@@ -11,7 +11,13 @@ namespace DiceGame
     interface IView
     {
         #region Properties
+        GameEngine Game { get; set; }
+
         TableLayoutPanel Table { get; set; }
+        int ScoreLabel { get; set; }
+
+        PictureBox RollButton { get; set; }
+        PictureBox PassButton { get; set; }
 
         IDicePanelView DiceFirst { get; }
         IDicePanelView DiceSecond { get; }
@@ -19,16 +25,11 @@ namespace DiceGame
         IDicePanelView DiceFourth { get; }
         IDicePanelView DiceFifth { get; }
 
-        PictureBox RollButton { get; set; }
-        PictureBox PassButton { get; set; }
+        List<PictureBox> Dices { get; set; }
+        List<PictureBox> Buttons { get; set; }
 
         List<Bitmap> DiceResources { get; set; }
         List<Bitmap> DiceOpacityResources { get; set; }
-
-        int Rolls { get; set; }
-        int Rounds { get; set; }
-        int TotalScore { get; set; }
-        List<int> FinalRolls { get; }
         #endregion
 
         #region Events
@@ -37,11 +38,7 @@ namespace DiceGame
         event Action PassButtonClicked;
         #endregion
 
-
         #region Methods
-        void Roll(List<int> randoms);
-        void ChooseCategory();
-        void NextRound();
         void Exit();
         #endregion
     }

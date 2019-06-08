@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categories.cs" />
     <Compile Include="DicePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,6 +59,7 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameEngine.cs" />
     <Compile Include="IDicePanelView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="Model.cs" />
@@ -143,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\images\DiceRollOpacity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\DiceRules.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\images\DiceTable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
