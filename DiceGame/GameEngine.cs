@@ -29,6 +29,7 @@ namespace DiceGame
             TotalScore = 0;
             FinalRolls = new List<int>();
         }
+
         public void Roll(List<int> randoms, List<PictureBox> dices, List<Bitmap> diceResources)
         {
             for(int i = 0; i < dices.Count; i++)
@@ -76,30 +77,13 @@ namespace DiceGame
             List<bool> diceFlags = new List<bool> { false, false, false, false, false };
             for (int i = 1; i <= 6; i++)
             {
-                if (!diceFlags[0] && (dices[0].Image == diceResources[i] || dices[0].Image == diceOpacityResources[i]))
+                for(int j = 0; j < diceFlags.Count; j++)
                 {
-                    finalRolls.Add(i);
-                    diceFlags[0] = true;
-                }
-                if (!diceFlags[1] && (dices[1].Image == diceResources[i] || dices[1].Image == diceOpacityResources[i]))
-                {
-                    finalRolls.Add(i);
-                    diceFlags[1] = true;
-                }
-                if (!diceFlags[2] && (dices[2].Image == diceResources[i] || dices[2].Image == diceOpacityResources[i]))
-                {
-                    finalRolls.Add(i);
-                    diceFlags[2] = true;
-                }
-                if (!diceFlags[3] && (dices[3].Image == diceResources[i] || dices[3].Image == diceOpacityResources[i]))
-                {
-                    finalRolls.Add(i);
-                    diceFlags[3] = true;
-                }
-                if (!diceFlags[4] && (dices[4].Image == diceResources[i] || dices[4].Image == diceOpacityResources[i]))
-                {
-                    finalRolls.Add(i);
-                    diceFlags[4] = true;
+                    if (!diceFlags[j] && (dices[j].Image == diceResources[i] || dices[j].Image == diceOpacityResources[i]))
+                    {
+                        finalRolls.Add(i);
+                        diceFlags[j] = true;
+                    }
                 }
             }
 
@@ -110,11 +94,10 @@ namespace DiceGame
         {
             Rounds++;
 
-            dices[0].Image = diceResources[0];
-            dices[1].Image = diceResources[0];
-            dices[2].Image = diceResources[0];
-            dices[3].Image = diceResources[0];
-            dices[4].Image = diceResources[0];
+            foreach(var dice in dices)
+            {
+                dice.Image = diceResources[0];
+            }
 
             buttons[0].Image = diceResources[7];
             buttons[1].Image = diceOpacityResources[8];
